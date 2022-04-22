@@ -1,0 +1,15 @@
+Toolkit Reference
+=================
+
+Content of the toolkit can be found below.
+
+.. autosummary:: 
+    :toctree: generated
+
+    DGCNN_toolkit
+    analysis_toolkit
+
+.. toctree::
+   :glob:
+
+   source_files/*

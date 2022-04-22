@@ -1,0 +1,48 @@
+Toolkit Installation
+====================
+
+This is a guide for the toolkit installation only. 
+
+Dependencies
+------------
+
+The toolkit contains following imports:
+
+.. code-block:: python
+
+    import numpy as np
+    import pandas as pd
+    from sklearn.metrics import confusion_matrix
+    import tensorflow as tf
+    from tensorflow import keras
+    import matplotlib.pyplot as plt
+    from mpl_toolkits import mplot3d
+    from matplotlib.lines import Line2D
+    from matplotlib.colors import LogNorm
+    import seaborn as sns
+
+.. note::
+
+    | You don't need to install mpl_toolkits.
+    | It comes with matplotlib package.
+    | But you do need to import that if you want 3D graphics.
+
+Importing
+---------
+
+After you installed the dependencies, you just need to import the toolkit.
+
+.. code-block:: python
+
+    import DGCNN_toolkit as nn
+    import analysis_toolkit as atk
+
+
+Tested On
+---------
+
+.. csv-table:: 
+   :align: left
+   :file: tables/tested_on.csv
+   :widths: 70, 30
+   :header-rows: 1

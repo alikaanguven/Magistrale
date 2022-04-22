@@ -1,0 +1,5 @@
+analysis_toolkit.EventSelector.plot
+===================================
+
+
+.. autofunction:: analysis_toolkit.EventSelector.plot

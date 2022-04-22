@@ -1,0 +1,44 @@
+﻿DGCNN\_toolkit
+==============
+
+.. automodule:: DGCNN_toolkit
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      batch_distance_matrix_general
+      edge_conv
+      get_DGCNN
+      jitter_pointcloud
+      knn
+      lr_schedule
+      phys_accuracy_onnx
+      prepare_input
+      rotate_pointcloud
+      translate_pointcloud
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Dataset
+   
+   
+
+   
+   
+   
+
+
+

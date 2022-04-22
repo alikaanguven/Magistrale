@@ -1,0 +1,5 @@
+analysis_toolkit.get_event_contents
+===================================
+
+
+.. autofunction:: analysis_toolkit.get_event_contents

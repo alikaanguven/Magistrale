@@ -1,0 +1,5 @@
+analysis_toolkit.EventSelector._select_closest_iEvent
+=====================================================
+
+
+.. autofunction:: analysis_toolkit.EventSelector._select_closest_iEvent

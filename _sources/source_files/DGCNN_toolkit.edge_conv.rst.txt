@@ -1,0 +1,5 @@
+DGCNN_toolkit.edge_conv
+=======================
+
+
+.. autofunction:: DGCNN_toolkit.edge_conv

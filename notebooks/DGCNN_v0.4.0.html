@@ -1,0 +1,3070 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Training on AssociateTracks8.csv Data &#8212; Thesis 0.3.2 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/blank.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inferring from AssociateTracks414452.csv Data" href="DGCNN_414452.html" />
+    <link rel="prev" title="Quick Start" href="../quick_start.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Thesis</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../proj_desc.html">
+  Project Description
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../install.html">
+  Toolkit Installation
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../quick_start.html">
+  Quick Start
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../ref.html">
+  Toolkit Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../results.html">
+  Summary of Results
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../further.html">
+  Further Improvements
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Training on AssociateTracks8.csv Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_414452.html">
+   Inferring from AssociateTracks414452.csv Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_IPC.html">
+   Inferring from AssociateTracksIPC.csv Data
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Selecting-an-event-and-displaying-it">
+   Selecting an event and displaying it
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt .copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Training-on-AssociateTracks8.csv-Data">
+<h1>Training on AssociateTracks8.csv Data<a class="headerlink" href="#Training-on-AssociateTracks8.csv-Data" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># DGCNN v 0.4.0</span>
+<span class="c1"># Last edit: 22/02/2022</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install matplotlib==3.3.4 -&gt; Optional</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">DGCNN_toolkit</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">analysis_toolkit</span> <span class="k">as</span> <span class="nn">atk</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;AssociateTracks8.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iEvent</th>
+      <th>iHit</th>
+      <th>planeRec</th>
+      <th>wireRec</th>
+      <th>HitRecTime0</th>
+      <th>HitRecTime1</th>
+      <th>Charge0</th>
+      <th>Charge1</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>dchMCHitId</th>
+      <th>idxTrk</th>
+      <th>parent</th>
+      <th>track</th>
+      <th>particle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>297</td>
+      <td>-2.265900e-07</td>
+      <td>-2.287020e-07</td>
+      <td>2.456280e-10</td>
+      <td>3.381540e-10</td>
+      <td>-23.9023</td>
+      <td>1.882950</td>
+      <td>47.445000</td>
+      <td>43.0</td>
+      <td>5.0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>298</td>
+      <td>-3.645500e-07</td>
+      <td>-3.665130e-07</td>
+      <td>5.616130e-10</td>
+      <td>6.533530e-10</td>
+      <td>-23.2507</td>
+      <td>-0.745385</td>
+      <td>22.603200</td>
+      <td>44.0</td>
+      <td>5.0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>313</td>
+      <td>-2.922580e-07</td>
+      <td>-2.916970e-07</td>
+      <td>1.225900e-09</td>
+      <td>4.086350e-10</td>
+      <td>-28.4720</td>
+      <td>-12.436400</td>
+      <td>-149.675000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>313</td>
+      <td>-2.530840e-07</td>
+      <td>-2.535690e-07</td>
+      <td>8.378640e-10</td>
+      <td>8.398460e-10</td>
+      <td>-21.8402</td>
+      <td>7.366170</td>
+      <td>0.353747</td>
+      <td>25.0</td>
+      <td>5.0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>314</td>
+      <td>-3.646010e-07</td>
+      <td>-3.651530e-07</td>
+      <td>6.277870e-10</td>
+      <td>6.410150e-10</td>
+      <td>-21.4532</td>
+      <td>8.437870</td>
+      <td>3.120980</td>
+      <td>26.0</td>
+      <td>5.0</td>
+      <td>-1.0</td>
+      <td>1</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Rows with NaN are due to noise hits</p>
+<div class="line-block">
+<div class="line">There are 70k events, but 100k was generated.</div>
+<div class="line">Some of them are not here, because if no hits are detected in the detector, they were not written to the csv file.</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">iEvent</span> <span class="o">==</span> <span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iEvent</th>
+      <th>iHit</th>
+      <th>planeRec</th>
+      <th>wireRec</th>
+      <th>HitRecTime0</th>
+      <th>HitRecTime1</th>
+      <th>Charge0</th>
+      <th>Charge1</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>dchMCHitId</th>
+      <th>idxTrk</th>
+      <th>parent</th>
+      <th>track</th>
+      <th>particle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>59</th>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+      <td>202</td>
+      <td>-3.811770e-07</td>
+      <td>-3.806270e-07</td>
+      <td>4.042820e-10</td>
+      <td>3.634120e-10</td>
+      <td>22.35520</td>
+      <td>6.03474</td>
+      <td>-15.93640</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>203</td>
+      <td>-1.919240e-07</td>
+      <td>-1.912570e-07</td>
+      <td>5.294380e-10</td>
+      <td>4.785150e-10</td>
+      <td>22.55590</td>
+      <td>5.18795</td>
+      <td>-15.12360</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>231</td>
+      <td>-2.522800e-07</td>
+      <td>-2.519160e-07</td>
+      <td>5.411510e-10</td>
+      <td>5.277170e-10</td>
+      <td>16.73340</td>
+      <td>-15.85940</td>
+      <td>-3.76244</td>
+      <td>13.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>5</td>
+      <td>3</td>
+      <td>1</td>
+      <td>232</td>
+      <td>-3.849620e-07</td>
+      <td>-3.847320e-07</td>
+      <td>3.981010e-10</td>
+      <td>3.669230e-10</td>
+      <td>17.05940</td>
+      <td>-15.59200</td>
+      <td>-12.20000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>5</td>
+      <td>4</td>
+      <td>1</td>
+      <td>245</td>
+      <td>-2.000500e-07</td>
+      <td>-1.987600e-07</td>
+      <td>1.813670e-10</td>
+      <td>2.038980e-10</td>
+      <td>5.19372</td>
+      <td>-22.58790</td>
+      <td>17.50650</td>
+      <td>41.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trigger Condition</span>
+<span class="c1"># Trigger is applied just to make the plot more appealing</span>
+<span class="c1"># We don&#39;t lose many hits</span>
+<span class="n">trig_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;HitRecTime0&quot;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;HitRecTime0&quot;</span><span class="p">]</span><span class="o">&gt;-</span><span class="mf">7e-7</span><span class="p">)]</span>
+<span class="n">trig_df</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="k">del</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">sup_plot</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="mi">10</span><span class="o">**-</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_10_0.png" src="../_images/notebooks_DGCNN_v0.4.0_10_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The dataframe must be split into data and labels</span>
+
+<span class="n">data</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">prepare_input</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span> <span class="s2">&quot;MC&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Separate test and training set</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Uncomment if you don&#39;t have enough memory #####</span>
+<span class="c1">#</span>
+<span class="k">del</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span>
+<span class="c1">#</span>
+<span class="c1">### Uncomment if you don&#39;t have enough memory #####</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create Dataset objects to be fed into neural network.</span>
+
+<span class="n">num_hits</span> <span class="o">=</span> <span class="mi">432</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">,</span> <span class="n">num_clouds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">,</span> <span class="n">num_clouds</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the related shapes</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;points&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(56765, 432, 3)
+(14192, 432, 3)
+(56765, 432, 3)
+(14192, 432, 3)
+(56765, 432, 1)
+(14192, 432, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the related shapes</span>
+
+<span class="n">input_shapes</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">train</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">train</span><span class="o">.</span><span class="n">X</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">get_DGCNN</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;points&#39;: (432, 3), &#39;features&#39;: (432, 3), &#39;mask&#39;: (432, 1)}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compile the model and diplay its summary</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">nn</span><span class="o">.</span><span class="n">lr_schedule</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">phys_accuracy_onnx</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Model: &#34;DGCNN_SG&#34;
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+mask (InputLayer)               [(None, 432, 1)]     0
+__________________________________________________________________________________________________
+tf_op_layer_NotEqual (TensorFlo [(None, 432, 1)]     0           mask[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Cast (TensorFlowOpL [(None, 432, 1)]     0           tf_op_layer_NotEqual[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Equal (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Cast[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Cast_1 (TensorFlowO [(None, 432, 1)]     0           tf_op_layer_Equal[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul (TensorFlowOpLa [(None, 432, 1)]     0           tf_op_layer_Cast_1[0][0]
+__________________________________________________________________________________________________
+points (InputLayer)             [(None, 432, 3)]     0
+__________________________________________________________________________________________________
+tf_op_layer_Add (TensorFlowOpLa [(None, 432, 3)]     0           tf_op_layer_Mul[0][0]
+                                                                 points[0][0]
+__________________________________________________________________________________________________
+features (InputLayer)           [(None, 432, 3)]     0
+__________________________________________________________________________________________________
+tf_op_layer_Transpose (TensorFl [(None, 3, 432)]     0           tf_op_layer_Add[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims (TensorF [(None, 432, 1, 3)]  0           features[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_1 (TensorFlowOp [(None, 432, 3)]     0           tf_op_layer_Add[0][0]
+                                                                 tf_op_layer_Add[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_BatchMatMulV2 (Tens [(None, 432, 432)]   0           tf_op_layer_Add[0][0]
+                                                                 tf_op_layer_Transpose[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_2 (TensorFlowOp [(None, 432, 3)]     0           tf_op_layer_Add[0][0]
+                                                                 tf_op_layer_Add[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_fts_bn (BatchNormaliza (None, 432, 1, 3)    12          tf_op_layer_ExpandDims[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum (TensorFlowOpLa [(None, 432, 1)]     0           tf_op_layer_Mul_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_3 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_BatchMatMulV2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_1 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Squeeze (TensorFlow [(None, 432, 3)]     0           DGCNN_SG_fts_bn[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub (TensorFlowOpLa [(None, 432, 432)]   0           tf_op_layer_Sum[0][0]
+                                                                 tf_op_layer_Mul_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_1 (Tensor [(None, 1, 432)]     0           tf_op_layer_Sum_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Shape (TensorFlowOp [(3,)]               0           tf_op_layer_Squeeze[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_Sub[0][0]
+                                                                 tf_op_layer_Transpose_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_1 (Te [()]                 0           tf_op_layer_Shape[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Neg (TensorFlowOpLa [(None, 432, 432)]   0           tf_op_layer_AddV2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Range (TensorFlowOp [(None,)]            0           tf_op_layer_strided_slice_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_TopKV2 (TensorFlowO [(None, 432, 21), (N 0           tf_op_layer_Neg[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Reshape (TensorFlow [(None, 1, 1, 1)]    0           tf_op_layer_Range[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice (Tens [(None, 432, 20)]    0           tf_op_layer_TopKV2[0][1]
+__________________________________________________________________________________________________
+tf_op_layer_Tile (TensorFlowOpL [(None, 432, 20, 1)] 0           tf_op_layer_Reshape[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_1 (Tenso [(None, 432, 20, 1)] 0           tf_op_layer_strided_slice[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_2 (Tenso [(None, 432, 1, 3)]  0           tf_op_layer_Squeeze[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat (TensorFlowO [(None, 432, 20, 2)] 0           tf_op_layer_Tile[0][0]
+                                                                 tf_op_layer_ExpandDims_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_1 (TensorFlowO [(None, 432, 20, 3)] 0           tf_op_layer_ExpandDims_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_GatherNd (TensorFlo [(None, 432, 20, 3)] 0           tf_op_layer_Squeeze[0][0]
+                                                                 tf_op_layer_concat[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_1 (TensorFlowOp [(None, 432, 20, 3)] 0           tf_op_layer_GatherNd[0][0]
+                                                                 tf_op_layer_Tile_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_1 (TensorFlo [(None, 432, 20, 6)] 0           tf_op_layer_Tile_1[0][0]
+                                                                 tf_op_layer_Sub_1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_conv0 (Conv2 (None, 432, 20, 64)  384         tf_op_layer_concat_1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_bn0 (BatchNo (None, 432, 20, 64)  256         DGCNN_SG_EdgeConv0_conv0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_act0 (Activa (None, 432, 20, 64)  0           DGCNN_SG_EdgeConv0_bn0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_conv1 (Conv2 (None, 432, 20, 64)  4096        DGCNN_SG_EdgeConv0_act0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_bn1 (BatchNo (None, 432, 20, 64)  256         DGCNN_SG_EdgeConv0_conv1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_act1 (Activa (None, 432, 20, 64)  0           DGCNN_SG_EdgeConv0_bn1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_3 (Tenso [(None, 432, 1, 3)]  0           tf_op_layer_Squeeze[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_conv2 (Conv2 (None, 432, 20, 64)  4096        DGCNN_SG_EdgeConv0_act1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_sc_conv (Con (None, 432, 1, 64)   192         tf_op_layer_ExpandDims_3[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_bn2 (BatchNo (None, 432, 20, 64)  256         DGCNN_SG_EdgeConv0_conv2[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_sc_bn (Batch (None, 432, 1, 64)   256         DGCNN_SG_EdgeConv0_sc_conv[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_act2 (Activa (None, 432, 20, 64)  0           DGCNN_SG_EdgeConv0_bn2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Squeeze_1 (TensorFl [(None, 432, 64)]    0           DGCNN_SG_EdgeConv0_sc_bn[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Max (TensorFlowOpLa [(None, 432, 64)]    0           DGCNN_SG_EdgeConv0_act2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_1 (TensorFlow [(None, 432, 64)]    0           tf_op_layer_Squeeze_1[0][0]
+                                                                 tf_op_layer_Max[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv0_sc_act (Acti (None, 432, 64)      0           tf_op_layer_AddV2_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Add_1 (TensorFlowOp [(None, 432, 64)]    0           tf_op_layer_Mul[0][0]
+                                                                 DGCNN_SG_EdgeConv0_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_2 (Tensor [(None, 64, 432)]    0           tf_op_layer_Add_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_4 (TensorFlowOp [(None, 432, 64)]    0           tf_op_layer_Add_1[0][0]
+                                                                 tf_op_layer_Add_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_BatchMatMulV2_1 (Te [(None, 432, 432)]   0           tf_op_layer_Add_1[0][0]
+                                                                 tf_op_layer_Transpose_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_5 (TensorFlowOp [(None, 432, 64)]    0           tf_op_layer_Add_1[0][0]
+                                                                 tf_op_layer_Add_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_2 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_6 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_BatchMatMulV2_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_3 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_2 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_Sum_2[0][0]
+                                                                 tf_op_layer_Mul_6[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_3 (Tensor [(None, 1, 432)]     0           tf_op_layer_Sum_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Shape_1 (TensorFlow [(3,)]               0           DGCNN_SG_EdgeConv0_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_2 (TensorFlow [(None, 432, 432)]   0           tf_op_layer_Sub_2[0][0]
+                                                                 tf_op_layer_Transpose_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_3 (Te [()]                 0           tf_op_layer_Shape_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Neg_1 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_AddV2_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Range_1 (TensorFlow [(None,)]            0           tf_op_layer_strided_slice_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_TopKV2_1 (TensorFlo [(None, 432, 21), (N 0           tf_op_layer_Neg_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Reshape_1 (TensorFl [(None, 1, 1, 1)]    0           tf_op_layer_Range_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_2 (Te [(None, 432, 20)]    0           tf_op_layer_TopKV2_1[0][1]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_2 (TensorFlowO [(None, 432, 20, 1)] 0           tf_op_layer_Reshape_1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_4 (Tenso [(None, 432, 20, 1)] 0           tf_op_layer_strided_slice_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_5 (Tenso [(None, 432, 1, 64)] 0           DGCNN_SG_EdgeConv0_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_2 (TensorFlo [(None, 432, 20, 2)] 0           tf_op_layer_Tile_2[0][0]
+                                                                 tf_op_layer_ExpandDims_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_3 (TensorFlowO [(None, 432, 20, 64) 0           tf_op_layer_ExpandDims_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_GatherNd_1 (TensorF [(None, 432, 20, 64) 0           DGCNN_SG_EdgeConv0_sc_act[0][0]
+                                                                 tf_op_layer_concat_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_3 (TensorFlowOp [(None, 432, 20, 64) 0           tf_op_layer_GatherNd_1[0][0]
+                                                                 tf_op_layer_Tile_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_3 (TensorFlo [(None, 432, 20, 128 0           tf_op_layer_Tile_3[0][0]
+                                                                 tf_op_layer_Sub_3[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_conv0 (Conv2 (None, 432, 20, 64)  8192        tf_op_layer_concat_3[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_bn0 (BatchNo (None, 432, 20, 64)  256         DGCNN_SG_EdgeConv1_conv0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_act0 (Activa (None, 432, 20, 64)  0           DGCNN_SG_EdgeConv1_bn0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_conv1 (Conv2 (None, 432, 20, 64)  4096        DGCNN_SG_EdgeConv1_act0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_bn1 (BatchNo (None, 432, 20, 64)  256         DGCNN_SG_EdgeConv1_conv1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_act1 (Activa (None, 432, 20, 64)  0           DGCNN_SG_EdgeConv1_bn1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_6 (Tenso [(None, 432, 1, 64)] 0           DGCNN_SG_EdgeConv0_sc_act[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_conv2 (Conv2 (None, 432, 20, 64)  4096        DGCNN_SG_EdgeConv1_act1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_sc_conv (Con (None, 432, 1, 64)   4096        tf_op_layer_ExpandDims_6[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_bn2 (BatchNo (None, 432, 20, 64)  256         DGCNN_SG_EdgeConv1_conv2[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_sc_bn (Batch (None, 432, 1, 64)   256         DGCNN_SG_EdgeConv1_sc_conv[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_act2 (Activa (None, 432, 20, 64)  0           DGCNN_SG_EdgeConv1_bn2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Squeeze_2 (TensorFl [(None, 432, 64)]    0           DGCNN_SG_EdgeConv1_sc_bn[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Max_1 (TensorFlowOp [(None, 432, 64)]    0           DGCNN_SG_EdgeConv1_act2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_3 (TensorFlow [(None, 432, 64)]    0           tf_op_layer_Squeeze_2[0][0]
+                                                                 tf_op_layer_Max_1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv1_sc_act (Acti (None, 432, 64)      0           tf_op_layer_AddV2_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Add_2 (TensorFlowOp [(None, 432, 64)]    0           tf_op_layer_Mul[0][0]
+                                                                 DGCNN_SG_EdgeConv1_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_4 (Tensor [(None, 64, 432)]    0           tf_op_layer_Add_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_7 (TensorFlowOp [(None, 432, 64)]    0           tf_op_layer_Add_2[0][0]
+                                                                 tf_op_layer_Add_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_BatchMatMulV2_2 (Te [(None, 432, 432)]   0           tf_op_layer_Add_2[0][0]
+                                                                 tf_op_layer_Transpose_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_8 (TensorFlowOp [(None, 432, 64)]    0           tf_op_layer_Add_2[0][0]
+                                                                 tf_op_layer_Add_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_4 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_9 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_BatchMatMulV2_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_5 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_8[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_4 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_Sum_4[0][0]
+                                                                 tf_op_layer_Mul_9[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_5 (Tensor [(None, 1, 432)]     0           tf_op_layer_Sum_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Shape_2 (TensorFlow [(3,)]               0           DGCNN_SG_EdgeConv1_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_4 (TensorFlow [(None, 432, 432)]   0           tf_op_layer_Sub_4[0][0]
+                                                                 tf_op_layer_Transpose_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_5 (Te [()]                 0           tf_op_layer_Shape_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Neg_2 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_AddV2_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Range_2 (TensorFlow [(None,)]            0           tf_op_layer_strided_slice_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_TopKV2_2 (TensorFlo [(None, 432, 21), (N 0           tf_op_layer_Neg_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Reshape_2 (TensorFl [(None, 1, 1, 1)]    0           tf_op_layer_Range_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_4 (Te [(None, 432, 20)]    0           tf_op_layer_TopKV2_2[0][1]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_4 (TensorFlowO [(None, 432, 20, 1)] 0           tf_op_layer_Reshape_2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_7 (Tenso [(None, 432, 20, 1)] 0           tf_op_layer_strided_slice_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_8 (Tenso [(None, 432, 1, 64)] 0           DGCNN_SG_EdgeConv1_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_4 (TensorFlo [(None, 432, 20, 2)] 0           tf_op_layer_Tile_4[0][0]
+                                                                 tf_op_layer_ExpandDims_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_5 (TensorFlowO [(None, 432, 20, 64) 0           tf_op_layer_ExpandDims_8[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_GatherNd_2 (TensorF [(None, 432, 20, 64) 0           DGCNN_SG_EdgeConv1_sc_act[0][0]
+                                                                 tf_op_layer_concat_4[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_5 (TensorFlowOp [(None, 432, 20, 64) 0           tf_op_layer_GatherNd_2[0][0]
+                                                                 tf_op_layer_Tile_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_5 (TensorFlo [(None, 432, 20, 128 0           tf_op_layer_Tile_5[0][0]
+                                                                 tf_op_layer_Sub_5[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_conv0 (Conv2 (None, 432, 20, 128) 16384       tf_op_layer_concat_5[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_bn0 (BatchNo (None, 432, 20, 128) 512         DGCNN_SG_EdgeConv2_conv0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_act0 (Activa (None, 432, 20, 128) 0           DGCNN_SG_EdgeConv2_bn0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_conv1 (Conv2 (None, 432, 20, 128) 16384       DGCNN_SG_EdgeConv2_act0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_bn1 (BatchNo (None, 432, 20, 128) 512         DGCNN_SG_EdgeConv2_conv1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_act1 (Activa (None, 432, 20, 128) 0           DGCNN_SG_EdgeConv2_bn1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_9 (Tenso [(None, 432, 1, 64)] 0           DGCNN_SG_EdgeConv1_sc_act[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_conv2 (Conv2 (None, 432, 20, 128) 16384       DGCNN_SG_EdgeConv2_act1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_sc_conv (Con (None, 432, 1, 128)  8192        tf_op_layer_ExpandDims_9[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_bn2 (BatchNo (None, 432, 20, 128) 512         DGCNN_SG_EdgeConv2_conv2[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_sc_bn (Batch (None, 432, 1, 128)  512         DGCNN_SG_EdgeConv2_sc_conv[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_act2 (Activa (None, 432, 20, 128) 0           DGCNN_SG_EdgeConv2_bn2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Squeeze_3 (TensorFl [(None, 432, 128)]   0           DGCNN_SG_EdgeConv2_sc_bn[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Max_2 (TensorFlowOp [(None, 432, 128)]   0           DGCNN_SG_EdgeConv2_act2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_5 (TensorFlow [(None, 432, 128)]   0           tf_op_layer_Squeeze_3[0][0]
+                                                                 tf_op_layer_Max_2[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv2_sc_act (Acti (None, 432, 128)     0           tf_op_layer_AddV2_5[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Add_3 (TensorFlowOp [(None, 432, 128)]   0           tf_op_layer_Mul[0][0]
+                                                                 DGCNN_SG_EdgeConv2_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_6 (Tensor [(None, 128, 432)]   0           tf_op_layer_Add_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_10 (TensorFlowO [(None, 432, 128)]   0           tf_op_layer_Add_3[0][0]
+                                                                 tf_op_layer_Add_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_BatchMatMulV2_3 (Te [(None, 432, 432)]   0           tf_op_layer_Add_3[0][0]
+                                                                 tf_op_layer_Transpose_6[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_11 (TensorFlowO [(None, 432, 128)]   0           tf_op_layer_Add_3[0][0]
+                                                                 tf_op_layer_Add_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_6 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_10[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_12 (TensorFlowO [(None, 432, 432)]   0           tf_op_layer_BatchMatMulV2_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sum_7 (TensorFlowOp [(None, 432, 1)]     0           tf_op_layer_Mul_11[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_6 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_Sum_6[0][0]
+                                                                 tf_op_layer_Mul_12[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Transpose_7 (Tensor [(None, 1, 432)]     0           tf_op_layer_Sum_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Shape_3 (TensorFlow [(3,)]               0           DGCNN_SG_EdgeConv2_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_6 (TensorFlow [(None, 432, 432)]   0           tf_op_layer_Sub_6[0][0]
+                                                                 tf_op_layer_Transpose_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_7 (Te [()]                 0           tf_op_layer_Shape_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Neg_3 (TensorFlowOp [(None, 432, 432)]   0           tf_op_layer_AddV2_6[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Range_3 (TensorFlow [(None,)]            0           tf_op_layer_strided_slice_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_TopKV2_3 (TensorFlo [(None, 432, 21), (N 0           tf_op_layer_Neg_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Reshape_3 (TensorFl [(None, 1, 1, 1)]    0           tf_op_layer_Range_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_strided_slice_6 (Te [(None, 432, 20)]    0           tf_op_layer_TopKV2_3[0][1]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_6 (TensorFlowO [(None, 432, 20, 1)] 0           tf_op_layer_Reshape_3[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_10 (Tens [(None, 432, 20, 1)] 0           tf_op_layer_strided_slice_6[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_11 (Tens [(None, 432, 1, 128) 0           DGCNN_SG_EdgeConv2_sc_act[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_6 (TensorFlo [(None, 432, 20, 2)] 0           tf_op_layer_Tile_6[0][0]
+                                                                 tf_op_layer_ExpandDims_10[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Tile_7 (TensorFlowO [(None, 432, 20, 128 0           tf_op_layer_ExpandDims_11[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_GatherNd_3 (TensorF [(None, 432, 20, 128 0           DGCNN_SG_EdgeConv2_sc_act[0][0]
+                                                                 tf_op_layer_concat_6[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Sub_7 (TensorFlowOp [(None, 432, 20, 128 0           tf_op_layer_GatherNd_3[0][0]
+                                                                 tf_op_layer_Tile_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_concat_7 (TensorFlo [(None, 432, 20, 256 0           tf_op_layer_Tile_7[0][0]
+                                                                 tf_op_layer_Sub_7[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_conv0 (Conv2 (None, 432, 20, 256) 65536       tf_op_layer_concat_7[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_bn0 (BatchNo (None, 432, 20, 256) 1024        DGCNN_SG_EdgeConv3_conv0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_act0 (Activa (None, 432, 20, 256) 0           DGCNN_SG_EdgeConv3_bn0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_conv1 (Conv2 (None, 432, 20, 256) 65536       DGCNN_SG_EdgeConv3_act0[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_bn1 (BatchNo (None, 432, 20, 256) 1024        DGCNN_SG_EdgeConv3_conv1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_act1 (Activa (None, 432, 20, 256) 0           DGCNN_SG_EdgeConv3_bn1[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_ExpandDims_12 (Tens [(None, 432, 1, 128) 0           DGCNN_SG_EdgeConv2_sc_act[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_conv2 (Conv2 (None, 432, 20, 256) 65536       DGCNN_SG_EdgeConv3_act1[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_sc_conv (Con (None, 432, 1, 256)  32768       tf_op_layer_ExpandDims_12[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_bn2 (BatchNo (None, 432, 20, 256) 1024        DGCNN_SG_EdgeConv3_conv2[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_sc_bn (Batch (None, 432, 1, 256)  1024        DGCNN_SG_EdgeConv3_sc_conv[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_act2 (Activa (None, 432, 20, 256) 0           DGCNN_SG_EdgeConv3_bn2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Squeeze_4 (TensorFl [(None, 432, 256)]   0           DGCNN_SG_EdgeConv3_sc_bn[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Max_3 (TensorFlowOp [(None, 432, 256)]   0           DGCNN_SG_EdgeConv3_act2[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_AddV2_7 (TensorFlow [(None, 432, 256)]   0           tf_op_layer_Squeeze_4[0][0]
+                                                                 tf_op_layer_Max_3[0][0]
+__________________________________________________________________________________________________
+DGCNN_SG_EdgeConv3_sc_act (Acti (None, 432, 256)     0           tf_op_layer_AddV2_7[0][0]
+__________________________________________________________________________________________________
+tf_op_layer_Mul_13 (TensorFlowO [(None, 432, 256)]   0           DGCNN_SG_EdgeConv3_sc_act[0][0]
+                                                                 tf_op_layer_Cast[0][0]
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 432, 512)     131584      tf_op_layer_Mul_13[0][0]
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, 432, 512)     0           dense[0][0]
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 432, 256)     131328      dropout[0][0]
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 432, 256)     0           dense_1[0][0]
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 432, 5)       1285        dropout_1[0][0]
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 2160)         0           dense_2[0][0]
+==================================================================================================
+Total params: 588,369
+Trainable params: 584,267
+Non-trainable params: 4,102
+__________________________________________________________________________________________________
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare model model saving directory.</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">save_dir</span> <span class="o">=</span> <span class="s1">&#39;model_checkpoints&#39;</span>
+<span class="c1"># _wn: with noise</span>
+<span class="c1"># _onnx: onnx compatible (1D output)</span>
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;DGCNN_modelbest_wn_onnx.h5&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">save_dir</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+
+
+<span class="c1"># Prepare callbacks for model saving and for learning rate adjustment.</span>
+
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ModelCheckpoint</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">filepath</span><span class="p">,</span>
+                             <span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_phys_accuracy_onnx&#39;</span><span class="p">,</span>
+                             <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">lr_scheduler</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">LearningRateScheduler</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">lr_schedule</span><span class="p">)</span>
+<span class="n">progress_bar</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ProgbarLogger</span><span class="p">()</span>
+<span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">lr_scheduler</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training parameters</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unless you want to train, type no.</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Type &#39;new train&#39; if you really want to continue.&quot;</span><span class="p">)</span>
+<span class="n">x</span>
+<span class="c1"># x = &quot;new train&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Type &#39;new train&#39; if you really want to continue. no
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;no&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;new train&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">datetime</span>
+
+    <span class="n">train</span><span class="o">.</span><span class="n">shuffle</span><span class="p">()</span>
+    <span class="n">logdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;logs&quot;</span><span class="p">,</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">))</span>
+    <span class="n">tensorboard_callback</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">TensorBoard</span><span class="p">(</span><span class="n">logdir</span><span class="p">,</span> <span class="n">histogram_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">train</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+              <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+              <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span>
+              <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span>
+              <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">checkpoint</span><span class="p">,</span> <span class="n">lr_scheduler</span><span class="p">])</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="s2">&quot;model_checkpoints/DGCNN_modelbest_wn_onnx.h5&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="s2">&quot;new train&quot;</span><span class="p">:</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># set the vertical range to [0-1]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;training_plot.png&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict, and reshape the output.</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">num_hits</span><span class="p">,</span><span class="n">num_classes</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">get_confusion_matrix</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span>
+                     <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_24_0.png" src="../_images/notebooks_DGCNN_v0.4.0_24_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">get_confusion_matrix</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_25_0.png" src="../_images/notebooks_DGCNN_v0.4.0_25_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting a confusion matrix for a single event.</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">get_confusion_matrix</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_26_0.png" src="../_images/notebooks_DGCNN_v0.4.0_26_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking if our confusion matrix works exactly like the sklearn confusion matrix.</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="n">confusion_matrix</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[ 11,  10,   0,   0],
+       [  0,   0,   0,   0],
+       [  0,   1,   1,   0],
+       [  0,   0,   0, 409]])
+</pre></div></div>
+</div>
+<div class="section" id="Selecting-an-event-and-displaying-it">
+<h2>Selecting an event and displaying it<a class="headerlink" href="#Selecting-an-event-and-displaying-it" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selecting an event</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">EventSelector</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">sub_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iEvent</th>
+      <th>iHit</th>
+      <th>planeRec</th>
+      <th>wireRec</th>
+      <th>HitRecTime0</th>
+      <th>HitRecTime1</th>
+      <th>Charge0</th>
+      <th>Charge1</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>dchMCHitId</th>
+      <th>idxTrk</th>
+      <th>parent</th>
+      <th>track</th>
+      <th>particle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>218</th>
+      <td>9</td>
+      <td>0</td>
+      <td>1</td>
+      <td>307</td>
+      <td>-3.438250e-07</td>
+      <td>-3.374240e-07</td>
+      <td>8.791240e-11</td>
+      <td>4.485970e-11</td>
+      <td>-24.5726</td>
+      <td>-10.48800</td>
+      <td>-97.0672</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>9</td>
+      <td>1</td>
+      <td>1</td>
+      <td>308</td>
+      <td>-2.676940e-07</td>
+      <td>-2.612890e-07</td>
+      <td>9.230640e-10</td>
+      <td>4.733260e-10</td>
+      <td>-24.8881</td>
+      <td>-9.58842</td>
+      <td>-96.4122</td>
+      <td>9.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>220</th>
+      <td>9</td>
+      <td>2</td>
+      <td>2</td>
+      <td>499</td>
+      <td>-3.151990e-07</td>
+      <td>-3.118670e-07</td>
+      <td>8.384720e-10</td>
+      <td>6.160160e-10</td>
+      <td>-21.4197</td>
+      <td>8.76699</td>
+      <td>-45.8028</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>221</th>
+      <td>9</td>
+      <td>3</td>
+      <td>2</td>
+      <td>500</td>
+      <td>-3.909870e-07</td>
+      <td>-3.878890e-07</td>
+      <td>4.006080e-10</td>
+      <td>2.892600e-10</td>
+      <td>-21.0699</td>
+      <td>9.80057</td>
+      <td>-48.3366</td>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>222</th>
+      <td>9</td>
+      <td>4</td>
+      <td>2</td>
+      <td>501</td>
+      <td>-2.482610e-07</td>
+      <td>-2.451310e-07</td>
+      <td>5.948990e-10</td>
+      <td>4.356200e-10</td>
+      <td>-20.7885</td>
+      <td>10.21320</td>
+      <td>-46.2869</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>223</th>
+      <td>9</td>
+      <td>5</td>
+      <td>4</td>
+      <td>887</td>
+      <td>-3.180620e-07</td>
+      <td>-3.151630e-07</td>
+      <td>2.220990e-09</td>
+      <td>1.615930e-09</td>
+      <td>-18.7737</td>
+      <td>10.93810</td>
+      <td>-47.2600</td>
+      <td>5.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>9</td>
+      <td>6</td>
+      <td>4</td>
+      <td>888</td>
+      <td>-3.583220e-07</td>
+      <td>-3.551750e-07</td>
+      <td>8.116470e-10</td>
+      <td>5.452440e-10</td>
+      <td>-17.9988</td>
+      <td>12.94990</td>
+      <td>-58.8403</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>225</th>
+      <td>9</td>
+      <td>7</td>
+      <td>6</td>
+      <td>1274</td>
+      <td>-2.905450e-07</td>
+      <td>-2.878770e-07</td>
+      <td>1.985240e-09</td>
+      <td>1.513250e-09</td>
+      <td>-16.7692</td>
+      <td>11.16370</td>
+      <td>-40.4597</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>226</th>
+      <td>9</td>
+      <td>8</td>
+      <td>6</td>
+      <td>1275</td>
+      <td>-3.927850e-07</td>
+      <td>-3.901310e-07</td>
+      <td>3.498090e-10</td>
+      <td>2.693130e-10</td>
+      <td>-16.4594</td>
+      <td>11.54520</td>
+      <td>-38.9909</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>227</th>
+      <td>9</td>
+      <td>9</td>
+      <td>8</td>
+      <td>1661</td>
+      <td>-3.365050e-07</td>
+      <td>-3.341670e-07</td>
+      <td>5.461920e-10</td>
+      <td>4.352190e-10</td>
+      <td>-14.9179</td>
+      <td>11.29340</td>
+      <td>-33.9298</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>-1.0</td>
+      <td>2</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>9</td>
+      <td>10</td>
+      <td>8</td>
+      <td>1662</td>
+      <td>-3.757390e-07</td>
+      <td>-3.736060e-07</td>
+      <td>9.481030e-10</td>
+      <td>7.616540e-10</td>
+      <td>-14.6020</td>
+      <td>11.65680</td>
+      <td>-32.7222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># testpred contas the predicted label, not the true label.</span>
+
+<span class="n">testpred</span> <span class="o">=</span> <span class="n">atk</span><span class="o">.</span><span class="n">combine_testpred</span><span class="p">(</span><span class="n">test</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span>
+<span class="n">testpred</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iEvent</th>
+      <th>iHit</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>track</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>-20.7778</td>
+      <td>10.53850</td>
+      <td>24.3877</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>-18.0667</td>
+      <td>17.54850</td>
+      <td>72.9478</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>2</td>
+      <td>-19.9314</td>
+      <td>9.08452</td>
+      <td>28.4150</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>3</td>
+      <td>-19.6259</td>
+      <td>9.72355</td>
+      <td>28.3490</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>4</td>
+      <td>-19.3891</td>
+      <td>5.91772</td>
+      <td>11.8168</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6130939</th>
+      <td>14191</td>
+      <td>427</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130940</th>
+      <td>14191</td>
+      <td>428</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130941</th>
+      <td>14191</td>
+      <td>429</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130942</th>
+      <td>14191</td>
+      <td>430</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130943</th>
+      <td>14191</td>
+      <td>431</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>6130944 rows × 6 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only prediction is plotted</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">EventSelector</span><span class="p">(</span><span class="n">testpred</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;front 3D side&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_31_0.png" src="../_images/notebooks_DGCNN_v0.4.0_31_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;hits per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_32_0.png" src="../_images/notebooks_DGCNN_v0.4.0_32_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;reconstructed hits per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_33_0.png" src="../_images/notebooks_DGCNN_v0.4.0_33_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;reconstructed hits per event (pair)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_34_0.png" src="../_images/notebooks_DGCNN_v0.4.0_34_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;time of arrival - track time&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_35_0.png" src="../_images/notebooks_DGCNN_v0.4.0_35_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;reconstructed tracks per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_36_0.png" src="../_images/notebooks_DGCNN_v0.4.0_36_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prediction is different from the true histogram.</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">testpred</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s2">&quot;reconstructed tracks per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_37_0.png" src="../_images/notebooks_DGCNN_v0.4.0_37_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Displaying what fraction of tracks are predicted correctly.</span>
+
+<span class="n">stats</span> <span class="o">=</span> <span class="n">atk</span><span class="o">.</span><span class="n">get_stats</span><span class="p">(</span><span class="n">test</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span>
+<span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iEvent</th>
+      <th>track</th>
+      <th>correct_hits</th>
+      <th>true_hits</th>
+      <th>norm_correct_hits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>1</td>
+      <td>11</td>
+      <td>11</td>
+      <td>1.00000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>11</td>
+      <td>21</td>
+      <td>0.52381</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.50000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>1</td>
+      <td>13</td>
+      <td>13</td>
+      <td>1.00000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>2</td>
+      <td>76</td>
+      <td>76</td>
+      <td>1.00000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>34179</th>
+      <td>14190</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1.00000</td>
+    </tr>
+    <tr>
+      <th>34180</th>
+      <td>14190</td>
+      <td>2</td>
+      <td>13</td>
+      <td>13</td>
+      <td>1.00000</td>
+    </tr>
+    <tr>
+      <th>34181</th>
+      <td>14190</td>
+      <td>3</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0.50000</td>
+    </tr>
+    <tr>
+      <th>34182</th>
+      <td>14191</td>
+      <td>1</td>
+      <td>13</td>
+      <td>13</td>
+      <td>1.00000</td>
+    </tr>
+    <tr>
+      <th>34183</th>
+      <td>14191</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.00000</td>
+    </tr>
+  </tbody>
+</table>
+<p>32981 rows × 5 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A table of comparison between the truth and the prediction</span>
+
+<span class="n">comparison_df</span> <span class="o">=</span> <span class="n">atk</span><span class="o">.</span><span class="n">compare_testpred</span><span class="p">(</span><span class="n">test</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span>
+<span class="n">comparison_df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iEvent</th>
+      <th>iHit</th>
+      <th>x</th>
+      <th>y</th>
+      <th>z</th>
+      <th>track</th>
+      <th>track_predicted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>-20.7778</td>
+      <td>10.53850</td>
+      <td>24.3877</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>-18.0667</td>
+      <td>17.54850</td>
+      <td>72.9478</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>2</td>
+      <td>-19.9314</td>
+      <td>9.08452</td>
+      <td>28.4150</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>3</td>
+      <td>-19.6259</td>
+      <td>9.72355</td>
+      <td>28.3490</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>4</td>
+      <td>-19.3891</td>
+      <td>5.91772</td>
+      <td>11.8168</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6130939</th>
+      <td>14191</td>
+      <td>427</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130940</th>
+      <td>14191</td>
+      <td>428</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130941</th>
+      <td>14191</td>
+      <td>429</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130942</th>
+      <td>14191</td>
+      <td>430</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6130943</th>
+      <td>14191</td>
+      <td>431</td>
+      <td>0.0000</td>
+      <td>0.00000</td>
+      <td>0.0000</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>6130944 rows × 7 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same event diplay, but both predictions and the true labels are visible</span>
+
+<span class="c1"># plt.style.use(&quot;default&quot;)</span>
+<span class="n">atk</span><span class="o">.</span><span class="n">EventSelector</span><span class="p">(</span><span class="n">comparison_df</span><span class="p">,</span> <span class="n">ind</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;front 3D side&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_40_0.png" src="../_images/notebooks_DGCNN_v0.4.0_40_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See the prediction contents</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">get_event_contents</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>e+</th>
+      <th>e-</th>
+      <th>sec</th>
+      <th>noise</th>
+      <th>tot</th>
+    </tr>
+    <tr>
+      <th>iEvent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11.0</td>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.0</td>
+      <td>83.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14187</th>
+      <td>0.0</td>
+      <td>23.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>14188</th>
+      <td>8.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>14189</th>
+      <td>34.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>14190</th>
+      <td>3.0</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>14191</th>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>14.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>14192 rows × 5 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See the true contents</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">get_event_contents</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>e+</th>
+      <th>e-</th>
+      <th>sec</th>
+      <th>noise</th>
+      <th>tot</th>
+    </tr>
+    <tr>
+      <th>iEvent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>21.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>13.0</td>
+      <td>76.0</td>
+      <td>0.0</td>
+      <td>9.0</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14187</th>
+      <td>0.0</td>
+      <td>22.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>14188</th>
+      <td>7.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>14189</th>
+      <td>29.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>35.0</td>
+    </tr>
+    <tr>
+      <th>14190</th>
+      <td>3.0</td>
+      <td>13.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>14191</th>
+      <td>13.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>14.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>14192 rows × 5 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking events where paired tracks are predicted</span>
+<span class="c1"># at a level greater than 0.90 threshold</span>
+
+<span class="n">stats_tmp</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;iEvent&quot;</span><span class="p">,</span> <span class="s2">&quot;track&quot;</span><span class="p">])</span>
+<span class="n">stats_pos</span> <span class="o">=</span> <span class="n">stats_tmp</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">,:]</span>
+<span class="n">stats_ele</span> <span class="o">=</span> <span class="n">stats_tmp</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">,:]</span>
+<span class="n">stats_pair</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stats_pos</span><span class="p">,</span> <span class="n">stats_ele</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+<span class="k">del</span> <span class="n">stats_tmp</span>
+<span class="n">stats_pair</span><span class="p">[(</span><span class="n">stats_pair</span><span class="o">.</span><span class="n">norm_correct_hits</span> <span class="o">&gt;</span> <span class="mf">0.90</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>correct_hits</th>
+      <th>true_hits</th>
+      <th>norm_correct_hits</th>
+      <th>correct_hits</th>
+      <th>true_hits</th>
+      <th>norm_correct_hits</th>
+    </tr>
+    <tr>
+      <th>iEvent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>13</td>
+      <td>13</td>
+      <td>1.0</td>
+      <td>76</td>
+      <td>76</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>63</td>
+      <td>63</td>
+      <td>1.0</td>
+      <td>14</td>
+      <td>14</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>38</td>
+      <td>38</td>
+      <td>1.0</td>
+      <td>9</td>
+      <td>9</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>18</td>
+      <td>18</td>
+      <td>1.0</td>
+      <td>26</td>
+      <td>26</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>38</td>
+      <td>38</td>
+      <td>1.0</td>
+      <td>34</td>
+      <td>34</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14159</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>45</td>
+      <td>45</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>14170</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>43</td>
+      <td>43</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>14176</th>
+      <td>16</td>
+      <td>16</td>
+      <td>1.0</td>
+      <td>10</td>
+      <td>11</td>
+      <td>0.909091</td>
+    </tr>
+    <tr>
+      <th>14184</th>
+      <td>79</td>
+      <td>79</td>
+      <td>1.0</td>
+      <td>11</td>
+      <td>11</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>14190</th>
+      <td>3</td>
+      <td>3</td>
+      <td>1.0</td>
+      <td>13</td>
+      <td>13</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>2519 rows × 6 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogram related to the predicted labels</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">testpred</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="n">histo</span><span class="o">=</span><span class="s2">&quot;reconstructed hits per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_44_0.png" src="../_images/notebooks_DGCNN_v0.4.0_44_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Histogram related to the true labels</span>
+
+<span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="n">histo</span><span class="o">=</span><span class="s2">&quot;reconstructed hits per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_45_0.png" src="../_images/notebooks_DGCNN_v0.4.0_45_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">histo</span><span class="o">=</span><span class="s2">&quot;hits per event&quot;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;stepfilled&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_46_0.png" src="../_images/notebooks_DGCNN_v0.4.0_46_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">testpred</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="n">histo</span><span class="o">=</span><span class="s2">&quot;reconstructed tracks per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_47_0.png" src="../_images/notebooks_DGCNN_v0.4.0_47_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="n">histo</span><span class="o">=</span><span class="s2">&quot;reconstructed tracks per event&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_48_0.png" src="../_images/notebooks_DGCNN_v0.4.0_48_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">draw_histogram</span><span class="p">(</span><span class="n">trig_df</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="n">histo</span><span class="o">=</span><span class="s2">&quot;reconstructed hits per event (pair)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_49_0.png" src="../_images/notebooks_DGCNN_v0.4.0_49_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s2">&quot;seaborn-dark&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;figure.facecolor&#39;</span><span class="p">,</span> <span class="s1">&#39;axes.facecolor&#39;</span><span class="p">,</span> <span class="s1">&#39;savefig.facecolor&#39;</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#212946&#39;</span>  <span class="c1"># bluish dark grey</span>
+<span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;text.color&#39;</span><span class="p">,</span> <span class="s1">&#39;axes.labelcolor&#39;</span><span class="p">,</span> <span class="s1">&#39;xtick.color&#39;</span><span class="p">,</span> <span class="s1">&#39;ytick.color&#39;</span><span class="p">]:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="n">param</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0.9&#39;</span>  <span class="c1"># very light grey</span>
+<span class="c1"># plt.grid(color=&#39;#2A3459&#39;)  # bluish dark grey, but slightly lighter than background</span>
+
+<span class="n">lst</span> <span class="o">=</span> <span class="mi">100</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">atk</span><span class="o">.</span><span class="n">compute_efficiencies</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">acceptance</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">i</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lst</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;primary e+&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lst</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;primary e-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lst</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Efficiency (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Reconstruction Efficiencies&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;minor&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2A3459&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2A3459&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plots/rec_eff_acc.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/notebooks_DGCNN_v0.4.0_50_0.png" src="../_images/notebooks_DGCNN_v0.4.0_50_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atk</span><span class="o">.</span><span class="n">compute_efficiencies</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">acceptance</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.9254495504495505, 0.9049967553536664, 0.7724434035909445]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.8375288404003524
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %%time</span>
+<span class="c1"># ids = trig_df[&quot;iEvent&quot;].unique()</span>
+<span class="c1"># np.random.shuffle(ids)</span>
+<span class="c1"># trig_df.set_index(&quot;iEvent&quot;).loc[ids].reset_index()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../quick_start.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Quick Start</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="DGCNN_414452.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Inferring from AssociateTracks414452.csv Data</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Ali Kaan Güven.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

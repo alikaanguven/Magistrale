@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>analysis_toolkit.EventSelector._select_closest_iEvent &#8212; Thesis 0.3.2 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/blank.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="analysis_toolkit.EventSelector.get_confusion_matrix" href="analysis_toolkit.EventSelector.get_confusion_matrix.html" />
+    <link rel="prev" title="analysis_toolkit.EventSelector" href="analysis_toolkit.EventSelector.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../index.html">
+<p class="title">Thesis</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../proj_desc.html">
+  Project Description
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../install.html">
+  Toolkit Installation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../quick_start.html">
+  Quick Start
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="../ref.html">
+  Toolkit Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../results.html">
+  Summary of Results
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../further.html">
+  Further Improvements
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generated/DGCNN_toolkit.html">
+   DGCNN_toolkit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../generated/analysis_toolkit.html">
+   analysis_toolkit
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset.html">
+   DGCNN_toolkit.Dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset.X.html">
+   DGCNN_toolkit.Dataset.X
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset.__getitem__.html">
+   DGCNN_toolkit.Dataset.__getitem__
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset.__len__.html">
+   DGCNN_toolkit.Dataset.__len__
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset._load.html">
+   DGCNN_toolkit.Dataset._load
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset.shuffle.html">
+   DGCNN_toolkit.Dataset.shuffle
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.Dataset.y.html">
+   DGCNN_toolkit.Dataset.y
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit._DGCNN_base.html">
+   DGCNN_toolkit._DGCNN_base
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit._DotDict.html">
+   DGCNN_toolkit._DotDict
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.batch_distance_matrix_general.html">
+   DGCNN_toolkit.batch_distance_matrix_general
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.edge_conv.html">
+   DGCNN_toolkit.edge_conv
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.get_DGCNN.html">
+   DGCNN_toolkit.get_DGCNN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.jitter_pointcloud.html">
+   DGCNN_toolkit.jitter_pointcloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.knn.html">
+   DGCNN_toolkit.knn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.lr_schedule.html">
+   DGCNN_toolkit.lr_schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.phys_accuracy_onnx.html">
+   DGCNN_toolkit.phys_accuracy_onnx
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.prepare_input.html">
+   DGCNN_toolkit.prepare_input
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.rotate_pointcloud.html">
+   DGCNN_toolkit.rotate_pointcloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DGCNN_toolkit.translate_pointcloud.html">
+   DGCNN_toolkit.translate_pointcloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.EventSelector.html">
+   analysis_toolkit.EventSelector
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   analysis_toolkit.EventSelector._select_closest_iEvent
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.EventSelector.get_confusion_matrix.html">
+   analysis_toolkit.EventSelector.get_confusion_matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.EventSelector.plot.html">
+   analysis_toolkit.EventSelector.plot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.combine_dfpred.html">
+   analysis_toolkit.combine_dfpred
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.combine_testpred.html">
+   analysis_toolkit.combine_testpred
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.compare_testpred.html">
+   analysis_toolkit.compare_testpred
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.compute_efficiencies.html">
+   analysis_toolkit.compute_efficiencies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.compute_efficiencies2.html">
+   analysis_toolkit.compute_efficiencies2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.draw_histogram.html">
+   analysis_toolkit.draw_histogram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.get_confusion_matrix.html">
+   analysis_toolkit.get_confusion_matrix
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.get_event_contents.html">
+   analysis_toolkit.get_event_contents
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.get_stats.html">
+   analysis_toolkit.get_stats
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="analysis_toolkit.sup_plot.html">
+   analysis_toolkit.sup_plot
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="analysis-toolkit-eventselector-select-closest-ievent">
+<h1>analysis_toolkit.EventSelector._select_closest_iEvent<a class="headerlink" href="#analysis-toolkit-eventselector-select-closest-ievent" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="analysis_toolkit.EventSelector._select_closest_iEvent">
+<code class="sig-prename descclassname"><span class="pre">analysis_toolkit.EventSelector.</span></code><code class="sig-name descname"><span class="pre">_select_closest_iEvent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#analysis_toolkit.EventSelector._select_closest_iEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the closest event id to a number in a Pandas series.</p>
+</dd></dl>
+
+</div>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="analysis_toolkit.EventSelector.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">analysis_toolkit.EventSelector</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="analysis_toolkit.EventSelector.get_confusion_matrix.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">analysis_toolkit.EventSelector.get_confusion_matrix</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Ali Kaan Güven.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

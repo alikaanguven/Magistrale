@@ -1,0 +1,5 @@
+analysis_toolkit.EventSelector
+==============================
+
+
+.. autofunction:: analysis_toolkit.EventSelector

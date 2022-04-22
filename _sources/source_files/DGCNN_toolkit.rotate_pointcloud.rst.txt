@@ -1,0 +1,5 @@
+DGCNN_toolkit.rotate_pointcloud
+===============================
+
+
+.. autofunction:: DGCNN_toolkit.rotate_pointcloud

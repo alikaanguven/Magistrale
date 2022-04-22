@@ -1,0 +1,5 @@
+DGCNN_toolkit.Dataset.__getitem__
+=================================
+
+
+.. autofunction:: DGCNN_toolkit.Dataset.__getitem__

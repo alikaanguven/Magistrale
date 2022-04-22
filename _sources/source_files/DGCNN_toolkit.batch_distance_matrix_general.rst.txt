@@ -1,0 +1,5 @@
+DGCNN_toolkit.batch_distance_matrix_general
+===========================================
+
+
+.. autofunction:: DGCNN_toolkit.batch_distance_matrix_general

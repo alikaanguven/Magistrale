@@ -1,0 +1,29 @@
+Quick Start
+===========
+
+
+
+Training Diagram
+----------------
+
+.. image:: images/training.drawio.png
+   :width: 600px
+   :align: center
+
+
+Inference Diagram
+-----------------
+
+.. image:: images/inference.drawio.png
+   :width: 600px
+   :align: center
+
+
+Full Examples
+-------------
+
+.. nbgallery::
+  
+   notebooks/DGCNN_v0.4.0.ipynb
+   notebooks/DGCNN_414452.ipynb
+   notebooks/DGCNN_IPC.ipynb

@@ -1,0 +1,5 @@
+DGCNN_toolkit.get_DGCNN
+=======================
+
+
+.. autofunction:: DGCNN_toolkit.get_DGCNN

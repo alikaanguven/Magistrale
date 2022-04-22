@@ -1,0 +1,5 @@
+analysis_toolkit.compare_testpred
+=================================
+
+
+.. autofunction:: analysis_toolkit.compare_testpred

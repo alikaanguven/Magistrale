@@ -1,0 +1,5 @@
+DGCNN_toolkit.prepare_input
+===========================
+
+
+.. autofunction:: DGCNN_toolkit.prepare_input

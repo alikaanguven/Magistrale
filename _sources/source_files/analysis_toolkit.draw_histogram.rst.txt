@@ -1,0 +1,5 @@
+analysis_toolkit.draw_histogram
+===============================
+
+
+.. autofunction:: analysis_toolkit.draw_histogram

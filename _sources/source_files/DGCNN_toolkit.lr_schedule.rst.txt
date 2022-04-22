@@ -1,0 +1,5 @@
+DGCNN_toolkit.lr_schedule
+=========================
+
+
+.. autofunction:: DGCNN_toolkit.lr_schedule

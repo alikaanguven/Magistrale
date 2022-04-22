@@ -1,0 +1,5 @@
+DGCNN_toolkit.translate_pointcloud
+==================================
+
+
+.. autofunction:: DGCNN_toolkit.translate_pointcloud

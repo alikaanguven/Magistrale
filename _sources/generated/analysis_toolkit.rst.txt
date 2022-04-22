@@ -1,0 +1,44 @@
+﻿analysis\_toolkit
+=================
+
+.. automodule:: analysis_toolkit
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      combine_dfpred
+      combine_testpred
+      compare_testpred
+      compute_efficiencies
+      compute_efficiencies2
+      draw_histogram
+      get_confusion_matrix
+      get_event_contents
+      get_stats
+      sup_plot
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      EventSelector
+   
+   
+
+   
+   
+   
+
+
+

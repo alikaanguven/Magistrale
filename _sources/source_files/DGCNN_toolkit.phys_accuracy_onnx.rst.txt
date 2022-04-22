@@ -1,0 +1,5 @@
+DGCNN_toolkit.phys_accuracy_onnx
+================================
+
+
+.. autofunction:: DGCNN_toolkit.phys_accuracy_onnx

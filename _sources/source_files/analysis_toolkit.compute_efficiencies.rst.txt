@@ -1,0 +1,5 @@
+analysis_toolkit.compute_efficiencies
+=====================================
+
+
+.. autofunction:: analysis_toolkit.compute_efficiencies

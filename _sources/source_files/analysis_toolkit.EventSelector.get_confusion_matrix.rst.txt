@@ -1,0 +1,5 @@
+analysis_toolkit.EventSelector.get_confusion_matrix
+===================================================
+
+
+.. autofunction:: analysis_toolkit.EventSelector.get_confusion_matrix
